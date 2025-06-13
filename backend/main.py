@@ -6,7 +6,7 @@ import subprocess
 app = FastAPI()
 
 origins = [
-    "https://your-frontend-domain.com",
+    "https://cyber-project-lop8g4kti-eli4479s-projects.vercel.app",
     "http://localhost:3000"
 ]
 
