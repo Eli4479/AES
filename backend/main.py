@@ -29,7 +29,7 @@ def aes_api(request: AESRequest):
     try:
         # Run the compiled C++ binary
         result = subprocess.run(
-            ['../build/AES', request.mode, request.input, request.key],
+            ['./build/AES', request.mode, request.input, request.key],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True
