@@ -25,7 +25,7 @@ def aes_api(request: AESRequest):
             status_code=400,
             detail="Key must be 16 characters or less"
         )
-
+    print(f"Received request: {request}")
     try:
         # Run the compiled C++ binary
         result = subprocess.run(
