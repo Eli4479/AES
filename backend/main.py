@@ -6,7 +6,7 @@ import subprocess
 app = FastAPI()
 
 origins = [
-    "https://cyber-project-lop8g4kti-eli4479s-projects.vercel.app",
+    "https://cyber-project-seven.vercel.app/",
     "http://localhost:3000"
 ]
 
@@ -27,6 +27,7 @@ class AESRequest(BaseModel):
 
 @app.post("/aes")
 def aes_api(request: AESRequest):
+
     # Validate input
     if request.mode not in {"encrypt", "decrypt"}:
         raise HTTPException(
