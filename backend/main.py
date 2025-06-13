@@ -1,8 +1,22 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 import subprocess
 
 app = FastAPI()
+
+origins = [
+    "https://your-frontend-domain.com",
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class AESRequest(BaseModel):
@@ -40,6 +54,7 @@ def aes_api(request: AESRequest):
             raise HTTPException(status_code=500, detail=result.stderr.strip())
 
         # Return the clean output
+        print(f"C++ output: {result.stdout.strip()}")
         return {"result": result.stdout.strip()}
 
     except Exception as e:
