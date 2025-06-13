@@ -21,6 +21,12 @@ With this application, you can quickly and securely encrypt or decrypt your data
 - ⚡ **Python FastAPI Backend**: Lightning-quick, secure RESTful API endpoints
 - 🎨 **Next.js Frontend**: Sleek, modern web interface built with TypeScript & React
 
+## AES Algorithm
+
+Below is a visual representation of the AES encryption process:
+
+![Diagram showing the AES Encryption Algorithm](https://github.com/user-attachments/assets/23e06f8c-0e65-419d-8f2b-1d5ed8369ef2)
+
 
 
 ## Installation
