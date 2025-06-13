@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+*.env
+
+# C++ build artifacts
+build/
+*.o
+*.out
+*.exe
+
+# VSCode or IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store

@@ -470,33 +470,21 @@ public:
         delete Inputbox;
     }
 };
-int main()
+int main(int argc, char *argv[])
 {
-    string input, userKey;
-    cout << "Enter the input string"<< endl;
-    getline(cin, input);
-    cout << "Enter the user key (less than or equal to 16 characters): "<< endl;
-    getline(cin, userKey);
-    while (userKey.length() > 16)
-    {
-        cout << "User key must be 16 characters or less. Please enter a valid key: ";
-        getline(cin, userKey);
+     if (argc != 4) {
+        cerr << "Usage: <program> <encrypt|decrypt> <input> <key>" << endl;
+        return 1;
     }
-    char choice;
-    cout<<"Do you want to encrypt or decrypt? (e/d): ";
-    cin >> choice;
-    while(choice != 'e' && choice != 'd')
+    string choice = argv[1];
+    string input = argv[2];
+    string userKey = argv[3];
+
+    if (choice == "encrypt")
     {
-        cout << "Invalid choice. Please enter 'e' for encrypt or 'd' for decrypt: ";
-        cin >> choice;
-    }
-    if (choice == 'e')
-    {
-        cout << "You chose to encrypt." << endl;
         AES aes(input, userKey);
         aes.calculate(true);
         vector<uint8_t> encryptedOutput = aes.output(true);
-        cout << "Encrypted output: "<< endl;
         for (uint8_t byte : encryptedOutput)
         {
             cout << hex << setw(2) << setfill('0') << (int)byte;
@@ -505,11 +493,9 @@ int main()
     }
     else
     {
-        cout << "You chose to decrypt." << endl;
         DecryptAES decryptAES(input, userKey);
         decryptAES.calculate();
         vector<uint8_t> decryptedOutput = decryptAES.getoutput();
-        cout << "Decrypted output: " << endl;
         for(uint8_t byte : decryptedOutput)
         {
             cout << (char)byte;
