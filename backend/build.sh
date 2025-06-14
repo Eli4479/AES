@@ -2,7 +2,9 @@
 set -e
 
 # Install Python dependencies
-pip install -r requirements.txt
+python -m venv venv
+source venv/bin/activate
+python -m pip install -r requirements.txt
 
 # Build C++ AES binary
 mkdir -p build
